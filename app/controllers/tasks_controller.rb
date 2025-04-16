@@ -37,21 +37,7 @@ class TasksController < ApplicationController
   end
 
   private
-
-  # def task_params
-  #   params.permit(:title, :description, :status, :assigned_to, :priority_id, :due_date)
-  # end
-
   def task_params
-    params.permit(:title, :description, :status, :priority_id, :assigned_to)
+    params.permit(:title, :description, :status, :priority_id, :assigned_to, :due_date)
   end
-  
-
-  # ender json: @tasks.as_json(
-  #     include: {
-  #       priority: { only: [:id, :name, :color_code] },
-  #       assigned_to: { only: [:id, :name] }
-  #     },
-  #     methods: [:status_label]
-  #   )
 end
