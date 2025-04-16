@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_14_155044) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_15_122237) do
   create_table "collaborators", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "task_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_collaborators_on_task_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_155044) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "status"
+    t.integer "status", default: 0
     t.integer "assigned_to"
     t.integer "priority_id", null: false
     t.date "due_date"

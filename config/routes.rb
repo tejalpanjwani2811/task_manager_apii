@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  get "priorities/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :tasks, only: [:index, :create, :update, :destroy]
+  resources :tasks, only: [:index, :create, :update, :destroy, :show]
   resources :users, only: [:index]
   resources :comments, only: [:create, :destroy]
+  resources :priorities, only: [:index]
+
+  mount ActionCable.server => '/cable'
 
   resources :teams, only: [:index, :create] do
     member do
